@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/mehtapkirkgoz/QA-Portfolio#readme",
   "devDependencies": {
-    "@playwright/test": "^1.64.0"
+    "@playwright/test": "^1.64.0",
+    "serve": "^14.2.6"
   }
 }
