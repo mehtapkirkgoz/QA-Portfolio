@@ -55,3 +55,23 @@ test('GitHub and LinkedIn links have correct URLs', async ({ page }) => {
   await expect(githubLinks.first()).toHaveAttribute('target', '_blank');
   await expect(linkedinLinks.first()).toHaveAttribute('target', '_blank');
 });
+
+
+test('project cards contain correct GitHub repository links', async ({ page }) => {
+  await page.goto('/');
+
+  const projectLinks = [
+    'https://github.com/mehtapkirkgoz/manual-testing-ecommerce',
+    'https://github.com/mehtapkirkgoz/api-testing-postman',
+    'https://github.com/mehtapkirkgoz/sql-for-qa',
+    'https://github.com/mehtapkirkgoz/qa-e2e-case-study',
+    'https://github.com/mehtapkirkgoz/ui-automation-playwright'
+  ];
+
+  for (const url of projectLinks) {
+    const link = page.locator(`a[href="${url}"]`);
+
+    await expect(link).toBeVisible();
+    await expect(link).toHaveAttribute('target', '_blank');
+  }
+});
