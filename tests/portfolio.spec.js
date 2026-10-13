@@ -123,3 +123,17 @@ test('portfolio displays correctly on mobile', async ({ page }) => {
 
   expect(hasHorizontalOverflow).toBe(false);
 });
+
+
+test('contact email link is correct', async ({ page }) => {
+  await page.goto('/');
+
+  const emailLink = page.getByRole('link', { name: 'Email Me' });
+
+  await expect(emailLink).toBeVisible();
+
+  await expect(emailLink).toHaveAttribute(
+    'href',
+    'mailto:mhtpkrkgz22@gmail.com'
+  );
+});
