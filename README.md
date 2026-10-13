@@ -1,5 +1,9 @@
 # API Testing Portfolio – Practice Software Testing
 
+## QA Portfolio
+
+https://mehtapkirkgoz.github.io/QA-Portfolio/
+
 ## Project Overview
 
 This project demonstrates basic API testing activities performed on the Practice Software Testing REST API using Postman.
@@ -192,8 +196,6 @@ During this project, I practiced how to:
 
 ## Project Status
 
-Completed.
+**Completed**
 
-This project represents my second QA portfolio project and focuses on basic API testing with Postman.
-
-It follows my first manual testing project and will be followed by projects focusing on SQL/database validation and test automation.
+This project demonstrates fundamental API testing skills using Postman, including CRUD operations, authentication, response validation, negative testing, and basic automated assertions.
