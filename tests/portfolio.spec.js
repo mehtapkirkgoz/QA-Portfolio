@@ -75,3 +75,25 @@ test('project cards contain correct GitHub repository links', async ({ page }) =
     await expect(link).toHaveAttribute('target', '_blank');
   }
 });
+
+
+test('CV can be downloaded', async ({ page }) => {
+  await page.goto('/');
+
+  const cvButton = page.getByRole('link', { name: 'Download CV' });
+
+  await expect(cvButton).toBeVisible();
+  await expect(cvButton).toHaveAttribute(
+    'href',
+    'assets/Mehtap-Kirkgoz-CV.pdf'
+  );
+  await expect(cvButton).toHaveAttribute('download', '');
+
+  const downloadPromise = page.waitForEvent('download');
+
+  await cvButton.click();
+
+  const download = await downloadPromise;
+
+  expect(download.suggestedFilename()).toBe('Mehtap-Kirkgoz-CV.pdf');
+});
