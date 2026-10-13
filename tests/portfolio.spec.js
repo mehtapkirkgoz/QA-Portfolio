@@ -97,3 +97,29 @@ test('CV can be downloaded', async ({ page }) => {
 
   expect(download.suggestedFilename()).toBe('Mehtap-Kirkgoz-CV.pdf');
 });
+
+
+
+test('portfolio displays correctly on mobile', async ({ page }) => {
+  await page.setViewportSize({
+    width: 375,
+    height: 812
+  });
+
+  await page.goto('/');
+
+  await expect(
+    page.getByRole('heading', { name: /Testing software with/i })
+  ).toBeVisible();
+
+  await expect(page.locator('.nav-links')).toBeVisible();
+  await expect(page.locator('#skills')).toBeVisible();
+  await expect(page.locator('#projects')).toBeVisible();
+  await expect(page.locator('#contact')).toBeVisible();
+
+  const hasHorizontalOverflow = await page.evaluate(() => {
+    return document.documentElement.scrollWidth > window.innerWidth;
+  });
+
+  expect(hasHorizontalOverflow).toBe(false);
+});
